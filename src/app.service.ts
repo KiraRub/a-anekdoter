@@ -14,6 +14,14 @@ export class AppService {
 
   @Cron('* */30 * * * *')
   async handleCron() {
+    
+  const now = new Date();
+  const permTime = now.toLocaleString('en-US', { timeZone: 'Europe/Perm' });
+  const hours = new Date(permTime).getHours();
+  if (hours > 12 || hours < 9) {
+    return;
+  }
+    
     const page = await this.getMemDayPage();
     const mem = this.getRandomMemFromPage(page);
     await this.sendMessageToTelegram(encodeURIComponent(mem));
