@@ -1,0 +1,4 @@
+# Ensure all ts,js and json files use LF.
+*.ts         eol=lf
+*.js         eol=lf
+*.json       eol=lf
